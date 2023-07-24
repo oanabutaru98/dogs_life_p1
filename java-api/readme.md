@@ -134,3 +134,16 @@ The following guides illustrate how to use some features concretely:
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 * [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
 
+
+* Code SQL for Practicing
+* DROP TABLE Customer;
+
+-- create table with FK relationship
+CREATE TABLE IF NOT EXISTS customers(
+cid INT AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(100),
+fk_dest_id INT NOT NULL,
+FOREIGN KEY (fk_dest_id) REFERENCES destination(dest_id)
+);
+
+INSERT INTO customers(name, fk_dest_id) VALUES('George', 3);
