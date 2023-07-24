@@ -1,0 +1,79 @@
+-- Practical Exercises
+-- QL-2
+create table heroes (
+    name varchar (50) not null,
+    alias varchar (50) not null,
+    superPower varchar (70) not null,
+    powerRanking int not null
+);
+
+
+-- QLA-2
+create table teams (
+    name varchar(100),
+    objective varchar(100)
+);
+
+
+-- QL-3
+INSERT into heroes
+    (name, alias, superPower, powerRanking)
+values
+    ('Bruce Wayne', 'Batman', 'Martial Arts', 3),
+    ('Clark Kent', 'Superman', 'Flight', 5),
+    ('Jay Garrick', 'The Flash', 'Super-speed', 3),
+    ('Alan Scott', 'Green Lantern', 'Ring Creation', 4),
+    ('Helena Bertenelli', 'The Huntress', 'Crossbow Archery', 3),
+    ('Dr. Harleen Quinzel', 'Harley Quinn', 'Hammer-fighting', 3),
+    ('Floyd Lawton', 'Deadshot', 'Marksmaship', 2),
+    ('Cecil Adams', 'Count Vertigo', 'Drug-dealing', 2),
+    ('Damian Wayne', 'Robin', 'Swordsmanship', 2),
+    ('Dick Grayson', 'Nightwing', 'Acrobatics', 3)
+;
+
+--> read the records
+select * from heroes;
+select name, alias from heroes;
+select name as "Hero Name", alias from heroes;
+select * from heroes where PowerRanking > 3;
+select * from heroes where PowerRanking > 2 and PowerRanking  < 5;
+select * from heroes where PowerRanking >= 2 and PowerRanking  < 5;
+
+-- search for heroes with names that contain inside the characters 'el'
+select * from heroes where name like '%el%';
+
+--> update the records
+update heroes
+  set superPower = 'Flight and strength of steel'
+ where alias = 'Superman';
+
+update heroes
+  set
+    superPower = 'Flight, strength of steel, and laser in eyes',
+    powerRanking = 4
+ where alias = 'Superman';
+
+--> updating multiple rows
+select * from heroes where name like '%el%';
+
+update heroes
+  set powerRanking = 1
+ where name like '%el%';
+
+--> deleting rows from a table
+select * from heroes;
+
+delete from heroes
+  where name like '%el%';
+
+-- QL-4
+--> improving the table with a Primary Key
+drop table heroes;
+
+create table heroes (
+    id int AUTO_INCREMENT PRIMARY KEY,
+    name varchar (50) not null,
+    alias varchar (50) not null,
+    superPower varchar (70) not null,
+    powerRanking int not null
+);
