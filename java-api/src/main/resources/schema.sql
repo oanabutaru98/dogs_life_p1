@@ -1,5 +1,8 @@
+DROP TABLE IF EXISTS dogs;
+
 CREATE TABLE dogs (
-    id int auto_increment primary key,
-    name varchar (100) not null,
-    age int not null
+    dog_id INT NOT NULL,
+    name VARCHAR(250) NOT NULL,
+    age INT NOT NULL
 );
+
