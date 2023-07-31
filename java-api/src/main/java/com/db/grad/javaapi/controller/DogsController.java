@@ -16,4 +16,8 @@ public class DogsController {
     return "Dogs API is up and running!";
   }
 
+  @GetMapping("/dogs/count")
+  public long getCountAllDogs(){
+    return dogService.getNoOfDogs();
+  }
 }
