@@ -11,9 +11,12 @@ import java.util.Optional;
 @Service
 public class DogService implements IDogsService
 {
-    @Autowired
-    private DogsRepository itsDogsRepo;
+    private final DogsRepository itsDogsRepo;
 
+    @Autowired
+    public DogService(DogsRepository dogsRepo) {
+        this.itsDogsRepo = dogsRepo;
+    }
 
     @Override
     public List<Dog> getAllDogs()
@@ -24,7 +27,7 @@ public class DogService implements IDogsService
     @Override
     public Dog addDog(Dog theDog)
     {
-        return itsDogsRepo.save( theDog );
+        return itsDogsRepo.save(theDog);
     }
 
     @Override
@@ -45,7 +48,7 @@ public class DogService implements IDogsService
             result = true;
         }
 
-        return  result;
+        return result;
     }
 
     @Override
@@ -55,11 +58,9 @@ public class DogService implements IDogsService
     }
 
     @Override
-    public Dog getDogByName(String dogsName )
+    public Dog getDogByName(String dogsName)
     {
-        Dog dogToFind = new Dog();
-        dogToFind.setName(dogsName);
-        List<Dog> dogs = itsDogsRepo.findByName(dogToFind);
+        List<Dog> dogs = itsDogsRepo.findByName(dogsName);
         Dog result = null;
 
         if( dogs.size() == 1)
@@ -71,6 +72,6 @@ public class DogService implements IDogsService
     @Override
     public Dog updateDogDetails(Dog dogToUpdate)
     {
-        return itsDogsRepo.save( dogToUpdate );
+        return itsDogsRepo.save(dogToUpdate);
     }
 }

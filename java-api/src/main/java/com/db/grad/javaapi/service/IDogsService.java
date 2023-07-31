@@ -17,7 +17,7 @@ public interface IDogsService
 
     public Dog getDogById(long uniqueId);
 
-    public Dog getDogByName(String dogsName );
+    public Dog getDogByName(String dogsName);
 
     public Dog updateDogDetails(Dog dogToUpdate);
 }
