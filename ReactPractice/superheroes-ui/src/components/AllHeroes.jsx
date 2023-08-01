@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import HeroDetail from './HeroDetail'
 import Row from 'react-bootstrap/Row'
 
@@ -15,14 +15,30 @@ const AllHeroes = () => {
         {"id":9,"name":"damian Wayne","alias":"Robin","superpower":"swordmanship","teamid":5},
         {"id":10,"name":"dick grayson","alias":"Nightwing","superpower":"acrobatics","teamid":5}
     ]
+
+    const [total, setTotal] = useState(0);
+    const totalCountHandler = (name) =>{
+      console.log(name)
+      setTotal(total+1);
+  }
   return (
-    <Row>
-      {heroes.map ( hero => (
-        <div className='container' key={hero.id}>
-        <HeroDetail info={hero}/>
-        </div>
-      ))}
+    <>
+    <h1> Total count is: {total}</h1>
+    <Row >
+    {heroes.map(hero => (
+      <div className='container' key={hero.id.toString()}>
+        <HeroDetail info={hero} parentCount={totalCountHandler} />
+      </div>
+     ))}
     </Row>
+  </>
+    // <Row>
+    //   {heroes.map ( hero => (
+    //     <div className='container' key={hero.id}>
+    //     <HeroDetail info={hero}/>
+    //     </div>
+    //   ))}
+    // </Row>
     // heroes.map( hero => (
     //     <HeroDetail info={hero} key={hero.id.toString()}/>
     // ))
